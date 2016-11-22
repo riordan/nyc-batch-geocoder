@@ -1,0 +1,22 @@
+[
+  {
+    "BoroughCode": 1,
+    "HouseNumber": 1319,
+    "StreetName": "ST NICHOLAS AVENUE",
+    "ZipCode": 10033
+  },
+  {
+    "BoroughCode": 1,
+    "HouseNumber": 250,
+    "StreetName": "EAST HOUSTON STREET",
+    "ZipCode": 10002,
+    "OptionalFields":  """You can add optional fields to keep track of things
+                        like ID's. The only variables where this won't work are:
+                        * lngLat
+                        * tract
+                        * block
+                        Please avoid using these"""
+  },
+
+  {...}
+]

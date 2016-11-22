@@ -1,0 +1,48 @@
+Geocode NYC! Really Fast! In Docker!
+======================
+
+Based on Noah [@Veltman's](https://github.com/veltman) [Geosupport w/ JS and node-ffi](https://gist.github.com/veltman/2c79458b2226466920dbd601bf94551f),  itself based on brilliant work by [Chris Whong](https://gist.github.com/chriswhong/2e5f0f41fc5d366ec902613251445b30).
+
+# Instructions
+## Build Docker Image
+1. Have Docker
+2. Build Docker image locally by typing `docker build -t nyc-batch-geocoder`
+
+##  Geocoding-ing
+### Data Formatting
+Get your data into the proper form. The script assumes you have your addresses in a json file in the data folder called  `data/addresses.json` formatted like so:
+```
+[
+  {
+    "Ticket Number": "040224903M",
+    "BoroughCode": 1,
+    "HouseNumber": 1319,
+    "StreetName": "ST NICHOLAS AVENUE",
+    "ZipCode": 10033
+  },
+  {...}
+}
+```
+**NOTE:** `BoroughCode` corresponds to which NYC borough the address is in:
+* Manhattan: 1
+* Bronx: 2
+* Brooklyn: 3
+* Queens: 4
+* Staten Island: 5
+
+You can have any other data you wish in the JSON object (e.g. keys, IDs, etc.) and it _should_ be preserved, unless the key is: either  `tract`, `block`, `lngLat`. These three keys will be overwritten when run through the geocoder in the output file.
+
+### Running the geocoder
+1. Put your addresses into `data/addresses.json` (as directed above)
+2. From within the `nyc-geocode` folder, run: `docker run -ti -v $PWD/data:/geocoding/data node-geosupport`
+3. Wait, but not too long. Your addresses will be geocoded into `data/geocoded.json`
+
+
+# Next Steps
+- [ ] Play nice with streams so large files don't make it cry
+- [ ] Work with CSVs or JSON
+ - [ ] CSVs in
+ - [ ] CSVs out
+- [ ] Automatic borough matching
+- [ ] Specify input and output files (or better yet still, stream by default)
+- [ ] Rewrite to use @chriswhong and @veltman's [node-geosupport](https://github.com/veltman/node-geosupport)
