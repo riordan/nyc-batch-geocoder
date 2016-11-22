@@ -34,9 +34,10 @@ You can have any other data you wish in the JSON object (e.g. keys, IDs, etc.) a
 
 ### Running the geocoder
 1. Put your addresses into `data/addresses.json` (as directed above)
-2. From within the `nyc-geocode` folder, run: `docker run -ti -v $PWD/data:/geocoding/data node-geosupport`
+2. RUN THE GEOCODER: From within the `nyc-geocode` folder, run: `docker run -v $PWD/data:/geocoding/data node-geosupport`
 3. Wait, but not too long. Your addresses will be geocoded into `data/geocoded.json`
 
+**NOTE**: the `-v $PWD/data:/geocoding/data` part of running the geocoder is critical to making this work. Inside the Docker container, the geocoder expects your data to live at `/geocoding/data`. To get your data there, this command mounts your local `data/` folder so it is also read/write-able from within the Docker container.
 
 # Next Steps
 - [ ] Play nice with streams so large files don't make it cry
