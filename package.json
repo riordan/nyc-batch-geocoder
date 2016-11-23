@@ -1,0 +1,31 @@
+{
+  "name": "nyc-geocode",
+  "version": "0.0.1",
+  "description": "Geocode NYC! Really Fast! In Docker! ======================",
+  "main": "geocode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riordan/crazy-fast-nyc-batch-geocoder.git"
+  },
+  "keywords": [
+    "nyc",
+    "newyorkcity",
+    "geocoding",
+    "geocoder",
+    "batch",
+    "bulk"
+  ],
+  "author": "@riordan",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/riordan/crazy-fast-nyc-batch-geocoder/issues"
+  },
+  "homepage": "https://github.com/riordan/crazy-fast-nyc-batch-geocoder#readme",
+  "dependencies": {
+    "ffi": "^2.2.0",
+    "proj4": "^2.3.15"
+  }
+}
