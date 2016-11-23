@@ -17,7 +17,7 @@ ENV GEOFILES="/geocoding/version-16c_16.3/fls/"
 # Start a package (optional)
 # Install node-ffi and proj4
 # proj4 is optional, only for reprojecting coordinates to lng/lat
-RUN npm install --save ffi proj4
+RUN npm install --save ffi proj4 JSONStream
 ADD geocode.js /geocoding/geocode.js
 
 CMD ["node", "geocode.js"]
