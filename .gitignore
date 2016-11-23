@@ -1,4 +1,4 @@
 .DS_Store
 /data/addresses.json
 /data/geocoded.json
-node_modules
+/node_modules
