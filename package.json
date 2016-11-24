@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/riordan/crazy-fast-nyc-batch-geocoder#readme",
   "dependencies": {
+    "JSONStream": "^1.2.1",
+    "csv-parse": "^1.1.7",
+    "csv-stringify": "^1.0.4",
     "ffi": "^2.2.0",
     "proj4": "^2.3.15"
   }
