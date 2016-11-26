@@ -1,10 +1,11 @@
 var proj4 = require("proj4"),
-    ffi = require("ffi");
+    ffi = require("ffi"),
+    rightpad = require("./utils/rightpad")
 
 var geosupport = {};
 
 //Configuration settings for Geosupport
-var lib = ffi.Library("version-16c_16.3/lib/libgeo.so", {
+var lib = ffi.Library("/geocoding/geosupport/version-16c_16.3/lib/libgeo.so", {
   geo: [ "void", [ "char *", "char *" ] ]
 });
 
@@ -51,22 +52,6 @@ geosupport.geocode = function (address) {
   // Optional: handle errors, return code "EE", etc.
 
   return address;
-
-}
-
-function rightpad(str, width) {
-
-  str = str.toString();
-
-  while (str.length < width) {
-    str += " ";
-  }
-
-  if (str.length > width) {
-    return str.slice(0, width);
-  }
-
-  return str;
 
 }
 
