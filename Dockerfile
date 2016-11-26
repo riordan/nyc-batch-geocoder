@@ -20,6 +20,7 @@ ENV GEOFILES="/geocoding/version-16c_16.3/fls/"
 
 
 ADD geocode.js /geocoding/geocode.js
+ADD geosupport.js /geocoding/geosupport.js
 ADD package.json /geocoding/package.json
 RUN npm install
 
