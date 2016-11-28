@@ -33,11 +33,10 @@ You can have any other data you wish in the JSON object (e.g. keys, IDs, etc.) a
 
 _Streaming output:_ By default, this program streams its output to stdout, which normally prints to the terminal. The `>` character in `> data/geocoded.csv` instead directs the output of this process into a local file at `data/geocoded.csv`. Yes, I realize it's inconsistent that it reads from the container's filesystem, but just streams to stdout, but I'm going to fix that soon I promise. That way we'll be able to `cat` data in. Eventually.
 
-# Next Steps
-- [x] Play nice with streams so large files don't make it cry
-- [x] Work with CSVs or JSON
- - [x] CSVs in
- - [x] CSVs out
-- [ ] Automatic borough matching
-- [ ] Specify input and output files (or better yet still, stream by default)
-- [ ] Rewrite to use @chriswhong and @veltman's [node-geosupport](https://github.com/veltman/node-geosupport)
+# Acknowledgements
+I've done literally the smallest amount of work on this project of anyone involved in bringing it to you. This project is very much one of those "Standing On the Shoulders of Giants" endeavors. The following folks and organizations are really the ones to thank.
+
+* This would not at all be possible without the several generations of employees at NYC's [Department of City Planning](http://www1.nyc.gov/site/planning/index.page) and [Department of Information Technology & Telecommunications (DOITT)](http://www1.nyc.gov/site/planning/index.page) for developing, updating, shepherding, and eventually publicly releasing Geosupport. Geosupport was built as a custom geocoder for the City of New York to run on IBM Mainframes. It's been around since _at least 1996_ (the earliest date [I can find a reference to geosupport](https://spatialityblog.com/2015/10/07/hidden-beauty-in-the-nyc-lion-file/)). It's still a critical tool for the City of New York, and over generations of employees, they've dealt with making sense of the edge cases that only happen in NYC. This is clearly a tool that's been evolved over time, so it's not the prettiest or most modern thing to work with, but I would happily trade that all off for the incredible breadth of data that only it can make available. I wish I knew everyone involved in this effort over the years so I could thank them by name. If you've been involved with the history, please [reach out](mailto:dr@daveriordan.com). I'd love to be able to know, document, and share more of Geosupport's story.
+* [Matthew Lipper](https://github.com/mlipper), the primary author of [Geoclient](https://github.com/CityOfNewYork/geoclient), NYC's [official web API to Geosupport](https://api.cityofnewyork.us/geoclient/v1/doc), which has been a major aide to this effort
+* [Chris Whong](https://github.com/chriswhong), a NYC data liberator extraordinaire. From working within NYC City Planning, Chris [started investigating how to use Geosupport locally](https://gist.github.com/chriswhong/2e5f0f41fc5d366ec902613251445b30), which kind of kick-started this effort.
+* [Noah Veltman](http://noahveltman.com), ["The Rodger Federer of Internet Research"](http://noahveltman.com/about/) and data journalist. Noah picked up Chris' work, built a [proof of concept in Node.js](https://gist.github.com/veltman/2c79458b2226466920dbd601bf94551f), and then–importantly–[tweeted about it](https://twitter.com/veltman/status/785611039832322048), which ultimately brought my attention to the effort. Chris & Noah are working on [a node-geosupport library](https://github.com/veltman/node-geosupport). It is still in progress.
