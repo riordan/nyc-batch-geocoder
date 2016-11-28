@@ -3,9 +3,10 @@ var proj4 = require("proj4"),
     rightpad = require("./utils/rightpad")
 
 var geosupport = {};
+var GEOSUPPORT_LIBGEO = process.env.GEOSUPPORT_LIBGEO;
 
 //Configuration settings for Geosupport
-var lib = ffi.Library("/geocoding/geosupport/version-16c_16.3/lib/libgeo.so", {
+var lib = ffi.Library(GEOSUPPORT_LIBGEO, {
   geo: [ "void", [ "char *", "char *" ] ]
 });
 

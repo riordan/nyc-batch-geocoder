@@ -14,6 +14,8 @@ RUN rm gdelx_16c.zip
 # Set env variables to the full paths to lib/ and fls/
 ENV LD_LIBRARY_PATH="/geocoding/geosupport/version-16c_16.3/lib/"
 ENV GEOFILES="/geocoding/geosupport/version-16c_16.3/fls/"
+#For within Node:  var lib = ffi.Library(...)
+ENV GEOSUPPORT_LIBGEO="/geocoding/geosupport/version-16c_16.3/lib/libgeo.so"
 
 
 WORKDIR /geocoding
