@@ -1,16 +1,13 @@
-FROM ubuntu:14.04
+FROM node:6.9.1
 MAINTAINER David Riordan  <dr@daveriordan.com>
 # Update, install Node and unzip (if needed)
-RUN sudo apt-get update --yes && \
-    sudo apt-get upgrade --yes && \
-    sudo apt-get install --yes unzip nodejs npm wget
-
-# Fix legacy node naming nonsense on Ubuntu (if needed)
-RUN sudo ln -s `which nodejs` /usr/bin/node
+RUN apt-get update --yes && \
+    apt-get upgrade --yes && \
+    apt-get install --yes unzip
 
 WORKDIR  /geocoding/geosupport
 # Download Geosupport Desktop for Linux
-RUN wget http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16c.zip && \
+RUN curl -O http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16c.zip && \
     unzip gdelx_16c.zip
 RUN rm gdelx_16c.zip
 
