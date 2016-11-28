@@ -22,4 +22,4 @@ WORKDIR /geocoding
 ADD . /geocoding/
 RUN npm install
 
-CMD ["node", "geocode.js"]
+CMD ["node", "index.js"]

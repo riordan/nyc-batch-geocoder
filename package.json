@@ -2,7 +2,7 @@
   "name": "nyc-geocode",
   "version": "0.0.1",
   "description": "Geocode NYC! Really Fast! In Docker! ======================",
-  "main": "geocode.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

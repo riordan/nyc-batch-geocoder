@@ -2,3 +2,4 @@
 /data
 !/data/addresses.example.csv
 /node_modules
+npm-debug.log

@@ -1,4 +1,4 @@
-var geosupport=require("./geosupport"),
+var geosupport=require("./lib/geosupport"),
     fs = require("fs"),
     JSONStream = require("JSONStream"),
     csvparse = require("csv-parse"),
