@@ -6,8 +6,9 @@ Based on Noah [@Veltman's](https://github.com/veltman) [Geosupport w/ JS and nod
 # Instructions
 ## Installation
 Two options are provided for working with this tool:
-1. [Install directly on Linux](INSTALL.md)
-2. Run from within [Docker]() (suggested)
+
+1. Install directly on Linux ([Instructions for Ubuntu 16.04](INSTALL.md))
+2. Run from within [Docker](https://www.docker.com/products/overview#/install_the_platform) (suggested)
 
 To build the docker image, run:
 ```bash
