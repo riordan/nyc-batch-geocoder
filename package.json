@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/riordan/crazy-fast-nyc-batch-geocoder.git"
+    "url": "git+https://github.com/riordan/nyc-batch-geocoder.git"
   },
   "keywords": [
     "nyc",
@@ -16,14 +16,15 @@
     "geocoding",
     "geocoder",
     "batch",
-    "bulk"
+    "bulk",
+    "csv"
   ],
   "author": "@riordan",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/riordan/crazy-fast-nyc-batch-geocoder/issues"
+    "url": "https://github.com/riordan/nyc-batch-geocoder/issues"
   },
-  "homepage": "https://github.com/riordan/crazy-fast-nyc-batch-geocoder#readme",
+  "homepage": "https://github.com/riordan/nyc-batch-geocoder#readme",
   "dependencies": {
     "JSONStream": "^1.2.1",
     "csv-parse": "^1.1.7",
