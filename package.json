@@ -27,6 +27,7 @@
   "homepage": "https://github.com/riordan/nyc-batch-geocoder#readme",
   "dependencies": {
     "JSONStream": "^1.2.1",
+    "colors": "^1.1.2",
     "commander": "^2.9.0",
     "csv-parse": "^1.1.7",
     "csv-stringify": "^1.0.4",

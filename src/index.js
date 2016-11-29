@@ -1,13 +1,13 @@
 var geosupport=require("./geosupport"),
-    fs = require("fs"),
-    JSONStream = require("JSONStream"),
+    //fs = require("fs"),
+    //JSONStream = require("JSONStream"),
     csvparse = require("csv-parse"),
-    csvstringify = require("csv-stringify")
+    csvstringify = require("csv-stringify"),
+    program = require('./program')
 
 var csvstringifier = csvstringify({header:true})
 
-
-fs.createReadStream('./data/addresses.csv')
+program.app.input
   .pipe(csvparse({columns:true}))
   .on('data', geosupport.geocode)
   .pipe(csvstringifier)
