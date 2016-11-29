@@ -1,25 +1,26 @@
-FROM node:6.9.1
+FROM ubuntu:16.04
+
 MAINTAINER David Riordan  <dr@daveriordan.com>
-# Update, install Node and unzip (if needed)
+# Update, install unzip, curl, and nodejs
 RUN apt-get update --yes && \
     apt-get upgrade --yes && \
-    apt-get install --yes unzip
+    apt-get install --yes unzip curl nodejs && \
+    # Fix Legacy naming nonsense on NodeJS/Ubuntu
+    ln -s `which nodejs` /usr/bin/node
 
-WORKDIR  /geocoding/geosupport
+WORKDIR  /nyc-batch-geocoder
 # Download Geosupport Desktop for Linux
-RUN curl -O http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16c.zip && \
-    unzip gdelx_16c.zip
-RUN rm gdelx_16c.zip
+RUN curl -O http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16d.zip && \
+    unzip gdelx_16d.zip
+RUN rm gdelx_16d.zip
 
 # Set env variables to the full paths to lib/ and fls/
-ENV LD_LIBRARY_PATH="/geocoding/geosupport/version-16c_16.3/lib/"
-ENV GEOFILES="/geocoding/geosupport/version-16c_16.3/fls/"
+ENV LD_LIBRARY_PATH="/nyc-batch-geocoder/version-16d_16.4/lib/"
+ENV GEOFILES="/nyc-batch-geocoder/version-16d_16.4/fls/"
 #For within Node:  var lib = ffi.Library(...)
-ENV GEOSUPPORT_LIBGEO="/geocoding/geosupport/version-16c_16.3/lib/libgeo.so"
+ENV GEOSUPPORT_LIBGEO="/nyc-batch-geocoder/version-16d_16.4/lib/libgeo.so"
 
-
-WORKDIR /geocoding
-ADD . /geocoding/
+ADD . /nyc-batch-geocoder/
 RUN npm install
 
 CMD ["node", "index.js"]
