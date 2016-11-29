@@ -4,7 +4,7 @@ MAINTAINER David Riordan  <dr@daveriordan.com>
 # Update, install unzip, curl, and nodejs
 RUN apt-get update --yes && \
     apt-get upgrade --yes && \
-    apt-get install --yes unzip curl nodejs && \
+    apt-get install --yes unzip curl nodejs npm && \
     # Fix Legacy naming nonsense on NodeJS/Ubuntu
     ln -s `which nodejs` /usr/bin/node
 
