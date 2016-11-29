@@ -2,6 +2,10 @@
 /data
 !/data/addresses.example.csv
 
+# Local geosupports
+/version-*/
+gdelx_*.zip
+
 # Logs
 logs
 *.log
