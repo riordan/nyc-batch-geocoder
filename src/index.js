@@ -11,7 +11,7 @@ program.app.input
   .pipe(csvparse({columns:true}))
   .on('data', geosupport.geocode)
   .pipe(csvstringifier)
-  .pipe(process.stdout)
+  .pipe(program.app.output)
 
 
 

@@ -10,7 +10,7 @@ RUN apt-get update --yes && \
 
 WORKDIR  /nyc-batch-geocoder
 # Download Geosupport Desktop for Linux
-RUN curl -O http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16d.zip && \
+RUN curl -LOk http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16d.zip && \
     unzip gdelx_16d.zip
 RUN rm gdelx_16d.zip
 
