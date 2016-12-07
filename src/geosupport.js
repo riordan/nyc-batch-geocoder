@@ -3,6 +3,40 @@ var proj4 = require("proj4"),
     rightpad = require("./utils/rightpad")
 
 var geosupport = {};
+
+function boroughMatch(borough){
+  /*
+  Takes Borough from input address. Returns matching numeric boroughcode.
+  If already numeric borough code, returns current code.
+  */
+
+    var codes = {
+      "1":"1",
+      "2":"2",
+      "3":"3",
+      "4":"4",
+      "5":"5",
+      "MANHATTAN": "1",
+      "MN": "1",
+      "BRONX": "2",
+      "THE BRONX": "2",
+      "BX": "2"
+      "BROOKLYN": "3",
+      "BK": "3",
+      "BKLYN": "3",
+      "QUEENS": "4",
+      "QN", "4"
+      "STATEN ISLAND": "5",
+      "STATENISLAND": "5",
+      "SI": "5"
+    }
+    console.log(String("borough.toUpperCase()"))
+    return codes[String(borough).toUpperCase()]
+
+}
+
+
+
 var GEOSUPPORT_LIBGEO = process.env.GEOSUPPORT_LIBGEO;
 
 //Configuration settings for Geosupport
@@ -19,7 +53,7 @@ var reproject = proj4('PROJCS["NAD_1983_StatePlane_New_York_Long_Island_FIPS_310
 geosupport.geocode = function (address) {
 
   // Construct COW string for work area 1
-  var wa1 = ("1 " + rightpad(address.HouseNumber, 16) + rightpad("", 38) + address.BoroughCode + rightpad("", 10) + rightpad(address.AltStreetName || address.StreetName, 32) + rightpad("", 113) + "C" + rightpad(address.ZipCode, 5)).toUpperCase(),
+  var wa1 = ("1 " + rightpad(address.HouseNumber, 16) + rightpad("", 38) + boroughMatch(address.BoroughCode) + rightpad("", 10) + rightpad(address.AltStreetName || address.StreetName, 32) + rightpad("", 113) + "C" + rightpad(address.ZipCode, 5)).toUpperCase(),
       wa2, returnCode, x, y;
 
   // Reset work areas
