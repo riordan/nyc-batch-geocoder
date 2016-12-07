@@ -3,6 +3,30 @@ Geocode NYC! Really Fast! In Docker!
 
 Based on Noah [@Veltman's](https://github.com/veltman) [Geosupport w/ JS and node-ffi](https://gist.github.com/veltman/2c79458b2226466920dbd601bf94551f),  itself based on brilliant work by [Chris Whong](https://gist.github.com/chriswhong/2e5f0f41fc5d366ec902613251445b30).
 
+# Usage
+```
+Usage: node src/index.js [options]
+
+Options:
+
+  -h, --help            output usage information
+  -V, --version         output the version number
+  -i, --input [source]  REQ: Input source. Takes file location or stream with '-i -'
+  -o --output [dest]    OPTIONAL: Output destination. Defaults to stream. Takes file location or stream with '-o -'
+```
+Get your data into the proper form. The script assumes you have your addresses in a csv file in the data folder called  `data/addresses.csv`. It requires the following columns: `BoroughCode` (explained below), `HouseNumber`, `StreetName`, `ZipCode`. Additional columns (not named `tract`, `building`, or `lonLat`) are fine.
+```
+BoroughCode, HouseNumber, StreetName, ZipCode
+"1", "1319", "ST NICHOLAS AVENUE", "10003"
+```
+**NOTE:** `BoroughCode` corresponds to which NYC borough the address is in:
+* Manhattan: 1
+* Bronx: 2
+* Brooklyn: 3
+* Queens: 4
+* Staten Island: 5
+
+
 # Instructions
 ## Installation
 Two options are provided for working with this tool:
@@ -32,6 +56,15 @@ BoroughCode, HouseNumber, StreetName, ZipCode
 You can have any other data you wish in the JSON object (e.g. keys, IDs, etc.) and it _should_ be preserved, unless the key is: either  `tract`, `block`, `lngLat`. These three keys will be overwritten when run through the geocoder in the output file.
 
 ### Running the geocoder
+There are two ways to run the geocoder: with `node nyc-batch-geocoder` directly reading/writing files, or via Unix streaming.
+
+**Docker Preferred way: Unix Streaming**
+You can use [unix streams]
+Example:
+`cat {path/to/your/properly-formatted.csv} | docker run -it nyc-batch-geocoder node src/index.js -i - -o - > {path/to/your/desired/output.csv}`
+
+
+**File read/write mode**
 1. Put your addresses into `data/addresses.json` (as directed above)
 2. RUN THE GEOCODER: From within the `nyc-batch-geocoder` folder, run: `docker run -t -v $PWD/data:/nyc-batch-geocoder/data nyc-batch-geocoder > data/geocoded.csv`
 3. Wait, but not too long. Your addresses will be geocoded into `data/geocoded.csv`
