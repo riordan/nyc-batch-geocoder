@@ -18,7 +18,7 @@ program
   .option ('-o --output [dest]', "OPTIONAL: Output destination. Defaults to stream. Takes file location or stream with '-o -'")
   .parse(process.argv);
 
-
+sensemake(program)
 
 
 // Display help if nothing displayed
