@@ -1,0 +1,84 @@
+FIELDCODE,FIELDNAME,SIZE,POSITION_FROM,POSITION_TO,COMMENT
+,Internal Use,21,1,21,
+,Continuous Parity Indicator/Duplicate Address Indicator,1,22,22,
+lowhousenum_blockface,Low House Number of Block Face,11,23,33,Sort Format
+highhousenum_blockface,High House Number of Block Face,11,34,44,Sort Format
+,"DCP Preferred LGC  (For Function 1E, See comment)",,,,"For Function 1E, the BOE preferred LGC is provided."
+num_xstreets_lowend,No. of Cross Streets at Low Address End,1,47,47,
+list_xstreets_lowend,List of Cross Streets at Low Address End (Up to 5 B5SCs),30,48,77,B5SC – Blank-Filled
+num_xstreets_highend,No. of Cross Streets at High Address End,1,78,78,
+list_xstreets_highend,List of Cross Streets at High Address End (Up to 5 B5SCs),30,79,108,B5SC – Blank-Filled
+,LION KEY:,10,109,118,
+lion_boroughcode,Borough Code,1,109,109,
+lion_facecode,Face Code,4,110,113,
+lion_sequencenum,Sequence Number,5,114,118,
+specialaddress_generatedrecord_flag,Special Address Generated Record Flag,1,119,119,
+sideofstreet,Side of Street Indicator,1,120,120,
+segmentlength,Segment Length in Feet,5,121,125,
+,,,,,
+,SPATIAL X-Y COORDINATES OF ADDRESS:,14,126,139,
+xcoord,X Coordinate,7,126,132,
+ycoord,Y Coordinate,7,133,139,
+zcoord,Reserved for Possible Z Coordinate,7,140,146,
+,,,,,
+communitydevelopment,Community Development Eligibility Indicator,1,147,147,
+marblehill_rikers_altborough,Marble Hill/Rikers Island AlternativeBorough Flag,1,148,148,
+streetlight_contractor_area,DOT Street Light Contractor Area,1,149,149,
+,COMMUNITY DISTRICT:,3,150,152,
+cd_boroughcode,Community District Borough Code,1,150,150,
+cd_num,Community District Number,2,151,152,
+zipcode,ZIP Code,5,153,157,
+,FUNCTION 1E ITEMS:,14,158,171,"Use ONLY for
+Function 1E"
+election_district,Election District,3,158,160,Invalid for Fn 1
+assembly_district,Assembly District,2,161,162,Invalid for Fn 1
+splitelection_district_flag,Split Election District Flag,1,163,163,Invalid for Fn 1
+congressional_district,Congressional District,2,164,165,Invalid for Fn 1
+statesenate_district,State Senatorial District,2,166,167,Invalid for Fn 1
+civilcourt_district,Civil Court District,2,168,169,Invalid for Fn 1
+citycouncil_district,City Council District,2,170,171,Invalid for Fn 1
+healthcenter_district,Health Center District,2,172,173,
+health_area,Health Area,4,174,177,
+sanitation_district,Sanitation District,3,178,180,
+sanitation_collection_scheduling,"Sanitation Collection Scheduling Section
+and Subsection",2,181,182,
+sanitation_regular_collection_schedule,Sanitation Regular Collection Schedule,5,183,187,
+sanitation_recycling_collection_schedule,Sanitation Recycling Collection Schedule,3,188,190,
+policepatrol_borough_command,Police Patrol Borough Command,1,191,191,
+police_precinct,Police Precinct,3,192,194,
+fire_division,Fire Division,2,195,196,
+fire_battalion,Fire Battalion,2,197,198,
+firecompany_type,Fire Company Type,1,199,199,
+firecompany_number,Fire Company Number,3,200,202,
+,Filler,1,203,203,"Was Split Comm
+School Dist Flag"
+community_school_district,Community School District,2,204,205,
+atomic_polygon,Atomic Polygon,3,206,208,"Was Dynamic
+Block"
+police_patrol_borough,Police Patrol Borough,2,209,210,
+feature_type_code,Feature Type Code,1,211,211,
+segment_type_code,Segment Type Code,1,212,212,
+alley_xstreet_list_flag,Alley or Cross Street List Flag,1,213,213,"A - Alley Split
+X - Cross Street
+List Modified"
+coincidence_segmentcount,Coincidence Segment Count,1,214,214,
+,Filler,2,215,216,
+censustract_borough,Borough of Census Tract,1,217,217,Internal
+censustract_1990,1990 Census Tract,6,218,223,
+censustract_2010,2010 Census Tract,6,224,229,
+censusblock_2010,2010 Census Block,4,230,233,
+censusblock_2010_suffix,2010 Census Block Suffix,1,234,234,Not Implemented
+censustract_2000,2000 Census Tract,6,235,240,
+censusblock_2000,2000 Census Block,4,241,244,
+censusblock_2000_suffix,2000 Census Block Suffix,1,245,245,
+neighborhood_tabulationarea,Neighborhood Tabulation Area (NTA),4,246,249,
+dsny_snowpriority,DSNY Snow Priority Code,1,250,250,Dept. of Sanitation
+dsny_organicrecycling_schedule,DSNY Organic Recycling Schedule,5,251,255,Dept. of Sanitation
+dsny_bulkpickup_schedule,DSNY Bulk Pickup Schedule,5,256,260,Dept. of Sanitation
+hurricane_evac_zone,Hurricane Evacuation Zone (HEZ),2,261,262,
+,Filler,11,263,273,
+vanityaddr_true_addrnum,"Underlying Address Number on True
+Street (for NAPs, Vanity, etc)",11,274,284,Sort Format
+vanityaddr_true_streetcode,Underlying B7SC of True Street (NAPs etc),8,285,292,
+segment_identifier,Segment Identifier,7,293,299,
+curve_flag,Curve Flag,1,300,300,
