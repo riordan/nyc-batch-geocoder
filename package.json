@@ -2,7 +2,7 @@
   "name": "nyc-geocode",
   "version": "0.0.1",
   "description": "Geocode NYC! Really Fast! In Docker! ======================",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +27,8 @@
   "homepage": "https://github.com/riordan/nyc-batch-geocoder#readme",
   "dependencies": {
     "JSONStream": "^1.2.1",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
     "csv-parse": "^1.1.7",
     "csv-stringify": "^1.0.4",
     "ffi": "^2.2.0",

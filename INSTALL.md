@@ -73,5 +73,5 @@ Rejoice at the installation of Geosupport.
 
 Run a test of the application from the `nyc-batch-geocoder/` directory:
 ```bash
-node index.js
+node src/index.js
 ```

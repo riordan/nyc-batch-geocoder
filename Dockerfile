@@ -5,12 +5,13 @@ MAINTAINER David Riordan  <dr@daveriordan.com>
 RUN apt-get update --yes && \
     apt-get upgrade --yes && \
     apt-get install --yes unzip curl nodejs npm && \
-    # Fix Legacy naming nonsense on NodeJS/Ubuntu
     ln -s `which nodejs` /usr/bin/node
+    # ^ Fix Legacy naming nonsense on NodeJS/Ubuntu
+
 
 WORKDIR  /nyc-batch-geocoder
 # Download Geosupport Desktop for Linux
-RUN curl -O http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16d.zip && \
+RUN curl -LOk http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_16d.zip && \
     unzip gdelx_16d.zip
 RUN rm gdelx_16d.zip
 
@@ -23,4 +24,4 @@ ENV GEOSUPPORT_LIBGEO="/nyc-batch-geocoder/version-16d_16.4/lib/libgeo.so"
 ADD . /nyc-batch-geocoder/
 RUN npm install
 
-CMD ["node", "index.js"]
+CMD ["node", "src/index.js"]
