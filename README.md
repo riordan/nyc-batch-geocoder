@@ -26,12 +26,7 @@ BoroughCode, HouseNumber, StreetName, ZipCode
 
 # Docker
 ## Docker Quickstart
-A version of this tool is hosted as [pre-built Docker image](https://hub.docker.com/r/riordan/nyc-batch-geocoder/). For most users, this is the recommended way of working with this tool (as the underlying library runs only on Linux, and lets be honest, you're probably on a Mac.)
-
-If you already have a properly-structured CSV (see _Data Formatting_ section below), you can run this tool from the command line without having to finagle with installing Geosupport.
-
-Requirements:
-* [installed Docker](https://www.docker.com/products/docker)
+A version of this tool is hosted as [pre-built Docker image](https://hub.docker.com/r/riordan/nyc-batch-geocoder/). For most users, this is the recommended way of working with this tool (as the underlying library runs only on Linux, and lets be honest, you're probably on a Mac.) If you already have a properly-structured CSV (see _Data Formatting_ section below), you can run this tool from the command line without having to finagle with installing Geosupport.
 
 From your OSX/ \*nix command line:
 
