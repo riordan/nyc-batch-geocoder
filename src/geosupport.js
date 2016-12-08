@@ -10,26 +10,7 @@ function boroughMatch(borough){
   If already numeric borough code, returns current code.
   */
 
-    var codes = {
-      "1":"1",
-      "2":"2",
-      "3":"3",
-      "4":"4",
-      "5":"5",
-      "MANHATTAN": "1",
-      "MN": "1",
-      "BRONX": "2",
-      "THE BRONX": "2",
-      "BX": "2",
-      "BROOKLYN": "3",
-      "BK": "3",
-      "BKLYN": "3",
-      "QUEENS": "4",
-      "QN": "4",
-      "STATEN ISLAND": "5",
-      "STATENISLAND": "5",
-      "SI": "5"
-    }
+    var codes = require('./data/boroughcodes')
     console.log(String("borough.toUpperCase()"))
     return codes[String(borough).toUpperCase()]
 
