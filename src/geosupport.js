@@ -20,12 +20,12 @@ function boroughMatch(borough){
       "MN": "1",
       "BRONX": "2",
       "THE BRONX": "2",
-      "BX": "2"
+      "BX": "2",
       "BROOKLYN": "3",
       "BK": "3",
       "BKLYN": "3",
       "QUEENS": "4",
-      "QN", "4"
+      "QN": "4",
       "STATEN ISLAND": "5",
       "STATENISLAND": "5",
       "SI": "5"
