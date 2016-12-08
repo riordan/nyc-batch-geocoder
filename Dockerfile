@@ -5,8 +5,9 @@ MAINTAINER David Riordan  <dr@daveriordan.com>
 RUN apt-get update --yes && \
     apt-get upgrade --yes && \
     apt-get install --yes unzip curl nodejs npm && \
-    # Fix Legacy naming nonsense on NodeJS/Ubuntu
     ln -s `which nodejs` /usr/bin/node
+    # ^ Fix Legacy naming nonsense on NodeJS/Ubuntu
+
 
 WORKDIR  /nyc-batch-geocoder
 # Download Geosupport Desktop for Linux

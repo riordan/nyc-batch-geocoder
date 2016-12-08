@@ -21,12 +21,6 @@ program
 sensemake(program)
 
 
-// Display help if nothing displayed
-if (!process.argv.slice(2).length) {
-  program.outputHelp(make_red);
-  process.exit(1);
-}
-
 function make_red(txt) {
   return colors.red(txt); //display the help text in red on the console
 }
@@ -34,6 +28,11 @@ function make_red(txt) {
 // Actual paramater sensemaking starts here
 
 function sensemake(program){
+  // Display help if nothing displayed
+  if (!process.argv.slice(2).length) {
+    program.outputHelp(make_red);
+    process.exit(1);
+  }
   input(program.input)
   output(program.output)
 }
