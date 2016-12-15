@@ -11,7 +11,6 @@ function boroughMatch(borough){
   */
 
     var codes = require('./data/boroughcodes')
-    console.log(String("borough.toUpperCase()"))
     return codes[String(borough).toUpperCase()]
 
 }
