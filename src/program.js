@@ -11,11 +11,16 @@ var app = {};
 
 module.exports = {}
 
+function list(val) {
+  return val.split(',');
+}
+
 program
   .version('0.0.1')
   .usage('[options]')
   .option('-i, --input [source]', "REQ: Input source. Takes file location or stream with '-i -'")
   .option ('-o --output [dest]', "OPTIONAL: Output destination. Defaults to stream. Takes file location or stream with '-o -'")
+  .option('--additional-fields <additional, fields>', 'Additional NYC data fields to add to output e.g. census_tract_2010. See documentation for full list.', list)
   .parse(process.argv);
 
 sensemake(program)
@@ -26,15 +31,16 @@ function make_red(txt) {
 }
 
 // Actual paramater sensemaking starts here
-
 function sensemake(program){
   // Display help if nothing displayed
   if (!process.argv.slice(2).length) {
     program.outputHelp(make_red);
     process.exit(1);
   }
+  //Actually process input
   input(program.input)
   output(program.output)
+  app.additionalFields = program.additionalFields
 }
 
 function input(val){
@@ -63,6 +69,12 @@ function output(val){
       app.output=process.stdout
   }
 
+}
+
+function arrayparse(val, appvar){
+  if(val){
+    return val.split(',').forEach(trim())
+  }
 }
 
 module.exports.cli = program; // Original CLI params

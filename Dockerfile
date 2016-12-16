@@ -24,4 +24,4 @@ ENV GEOSUPPORT_LIBGEO="/nyc-batch-geocoder/version-16d_16.4/lib/libgeo.so"
 ADD . /nyc-batch-geocoder/
 RUN npm install
 
-CMD ["node", "src/index.js"]
+CMD ["node", "src/index.js", "-i - -o -"]

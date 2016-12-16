@@ -11,7 +11,6 @@ function boroughMatch(borough){
   */
 
     var codes = require('./data/boroughcodes')
-    console.log(String("borough.toUpperCase()"))
     return codes[String(borough).toUpperCase()]
 
 }
@@ -68,21 +67,21 @@ geosupport.geocode.address = function (address, fields) {
     // State Plane coords
     x = +(wa2.substring(125, 132));
     y = +(wa2.substring(132, 139));
-
-    response_fields.census_tract_2010 = +(wa2.substring(223, 229)); //224->229
-    response_fields.census_block_2010 = +(wa2.substring(229, 233)); //230->233
-    response_fields.community_district_borrough_code = +(wa2.substring(149, 150)); //150, 150
-    response_fields.community_district_number = +(wa2.substring(150, 152)); // 151->152
-    response_fields.health_center_district = +(wa2.substring(171, 173)); //172-173
-    response_fields.health_area = +(wa2.substring(173, 177)); //174->177
-    response_fields.sanitation_district = +(wa2.substring(177, 180)); // 178->180
-    response_fields.sanitation_collection_scheduling_section_and_subsection = +(wa2.substring(180, 182)); //181->182
-    response_fields.sanitation_regular_collection_schedule = +(wa2.substring(182, 187)) //183->187
-    response_fields.sanitation_recycling_collection_schedule = +(wa2.substring(187, 190)) //188->190
-    response_fields.police_patrol_borough_command = +(wa2.substring(192, 191)) //191->191
-    response_fields.police_precinct = +(wa2.substring(192, 194)) //192->194
-    response_fields.fire_division = +(wa2.substring(194, 196)) //195->196
     
+    // response_fields.census_tract_2010 = +(wa2.substring(223, 229)); //224->229
+    // response_fields.census_block_2010 = +(wa2.substring(229, 233)); //230->233
+    // response_fields.community_district_borrough_code = +(wa2.substring(149, 150)); //150, 150
+    // response_fields.community_district_number = +(wa2.substring(150, 152)); // 151->152
+    // response_fields.health_center_district = +(wa2.substring(171, 173)); //172-173
+    // response_fields.health_area = +(wa2.substring(173, 177)); //174->177
+    // response_fields.sanitation_district = +(wa2.substring(177, 180)); // 178->180
+    // response_fields.sanitation_collection_scheduling_section_and_subsection = +(wa2.substring(180, 182)); //181->182
+    // response_fields.sanitation_regular_collection_schedule = +(wa2.substring(182, 187)) //183->187
+    // response_fields.sanitation_recycling_collection_schedule = +(wa2.substring(187, 190)) //188->190
+    // response_fields.police_patrol_borough_command = +(wa2.substring(192, 191)) //191->191
+    // response_fields.police_precinct = +(wa2.substring(192, 194)) //192->194
+    // response_fields.fire_division = +(wa2.substring(194, 196)) //195->196
+
 
     address.lngLat = reproject([x, y]);
 

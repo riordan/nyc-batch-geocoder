@@ -9,7 +9,7 @@ var csvstringifier = csvstringify({header:true})
 
 program.app.input
   .pipe(csvparse({columns:true}))
-  .on('data', geosupport.geocode)
+  .on('data', function(x){geosupport.geocode.address(x, program.app.additionalFields)})
   .pipe(csvstringifier)
   .pipe(program.app.output)
 
@@ -20,13 +20,3 @@ program.app.input
 // .on('data', geocode)                          // Geocode every address
 // .pipe(JSONStream.stringify())                 // Prepare it to output as JSON
 // .pipe(process.stdout);                        // Send it to stdout
-
-
-// // Load in some addresses
-// var addresses = require("./data/addresses.json");
-//
-// // Geocode each address
-// addresses.forEach(geocode);
-//
-// // Optional: write the results to a file or something!
-// fs.writeFile('./data/geocoded.json', JSON.stringify(addresses, null, 2) , 'utf-8');
