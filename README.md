@@ -31,7 +31,7 @@ A version of this tool is hosted as [pre-built Docker image](https://hub.docker.
 From your OSX/ \*nix command line:
 
 ```
-cat {YOUR-INPUT.csv} | docker run -it riordan/nyc-batch-geocoder node src/index.js -i - -o - > {YOUR-GEOCODED-OUTPUT.csv}
+cat {YOUR-INPUT.csv} | docker run -i riordan/nyc-batch-geocoder node src/index.js -i - -o - > {YOUR-GEOCODED-OUTPUT.csv}
 ```
 
 (or if you're a windows user, replace `cat {YOUR-INPUT.csv}` with `type {YOUR-INPUT.CSV}`).
@@ -65,7 +65,7 @@ There are two ways to run the geocoder: with `node nyc-batch-geocoder` directly 
 
 **File read/write mode**
 1. Put your addresses into `data/addresses.json` (as directed above)
-2. RUN THE GEOCODER: From within the `nyc-batch-geocoder` folder, run: `docker run -t -v $PWD/data:/nyc-batch-geocoder/data riordan:nyc-batch-geocoder > data/geocoded.csv`
+2. RUN THE GEOCODER: From within the `nyc-batch-geocoder` folder, run: `docker run -i -v $PWD/data:/nyc-batch-geocoder/data riordan:nyc-batch-geocoder > data/geocoded.csv`
 3. Wait, but not too long. Your addresses will be geocoded into `data/geocoded.csv`
 
 **NOTE**: the `-v $PWD/data:/nyc-batch-geocoder/data` part of running the geocoder is critical to making this work. Inside the Docker container, the geocoder expects your data to live at `/nyc-batch-geocoder/data`. To get your data there, this command mounts your local `data/` folder so it is also readable from within the Docker container.
