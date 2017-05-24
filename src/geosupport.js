@@ -1,73 +1,80 @@
-var proj4 = require("proj4"),
-    ffi = require("ffi"),
-    rightpad = require("./utils/rightpad")
+const ffi = require("ffi");
+const rightpad = require("./utils/rightpad");
 
-var geosupport = {};
+const geosupport = {}; // module to export
+const GEOSUPPORT_LIBGEO  = process.env.GEOSUPPORT_LIBGEO; // env var containing libgeo binary
 
-function boroughMatch(borough){
-  /*
+/*
   Takes Borough from input address. Returns matching numeric boroughcode.
   If already numeric borough code, returns current code.
-  */
-
-    var codes = require('./data/boroughcodes')
-    return codes[String(borough).toUpperCase()]
-
+ */
+function boroughMatch(borough){
+  const codes = require('./data/boroughcodes');
+  return codes[String(borough).toUpperCase()];
 }
 
 
-
-var GEOSUPPORT_LIBGEO = process.env.GEOSUPPORT_LIBGEO;
-
 //Configuration settings for Geosupport
-var lib = ffi.Library(GEOSUPPORT_LIBGEO, {
+const lib = ffi.Library(GEOSUPPORT_LIBGEO, {
   geo: [ "void", [ "char *", "char *" ] ]
 });
 
-// Faster to reuse the same buffers
-var wa1Buffer = new Buffer(1200),
-    wa2Buffer = new Buffer(1200);
 
-var reproject = proj4('PROJCS["NAD_1983_StatePlane_New_York_Long_Island_FIPS_3104_Feet",GEOGCS["GCS_North_American_1983",DATUM["D_North_American_1983",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",984250.0],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-74.0],PARAMETER["Standard_Parallel_1",40.66666666666666],PARAMETER["Standard_Parallel_2",41.03333333333333],PARAMETER["Latitude_Of_Origin",40.16666666666666],UNIT["Foot_US",0.3048006096012192]]').inverse;
+// you give this function a house number, a borough, a street name, and zip
+// and it gives you a COW
+// input: str, str | int, str
+// output: <buffer>
+function moooooo(house, street, boro) {
+  var cowstr = "";
+  cowstr += "1A"; // function code
+  cowstr += rightpad(house, 16);
+  cowstr += " ".repeat(38); // spacing
+  cowstr += boroughMatch(boro);
+  cowstr += " ".repeat(10); // yes, more spacing
+  cowstr += rightpad(street, 32);
+  cowstr += " ".repeat(113); // space space space
+  cowstr += "C"; // and now the letter 'C'
+  
+  buffer = Buffer.alloc(1200, " ");
+  buffer.write(cowstr.toUpperCase(), 'ascii');
+  
+  return buffer;
+}
 
-geosupport.geocode = function (address) {
+geosupport.geocode = function (a) {
+  const address = Object.assign({}, a);
 
-  // Construct COW string for work area 1
-  var wa1 = ("1 " + rightpad(address.HouseNumber, 16) + rightpad("", 38) + boroughMatch(address.BoroughCode) + rightpad("", 10) + rightpad(address.AltStreetName || address.StreetName, 32) + rightpad("", 113) + "C" + rightpad(address.ZipCode, 5)).toUpperCase(),
-      wa2, returnCode, x, y;
-
-  // Reset work areas
-  wa1Buffer.fill(" ");
-  wa2Buffer.fill(" ");
-
-  // Write to work area 1
-  wa1Buffer.write(wa1, "utf8");
+  var wa1Buffer = moooooo(address.houseNumber, address.streetName, address.borough); 
+  var wa2Buffer = Buffer.alloc(1363, " ");
 
   // Geocode
   lib.geo(wa1Buffer, wa2Buffer);
 
-  // Update with results
-  wa1 = wa1Buffer.toString();
-  wa2 = wa2Buffer.toString();
-
-  returnCode = wa1.substring(716, 718);
+  // result strings
+  const wa1 = wa1Buffer.toString();
+  const wa2 = wa2Buffer.toString();
+  
+  const returnCode = wa1.substring(716, 718);
 
   // Success
   if (returnCode === "00") {
-
-    // State Plane coords
-    x = +(wa2.substring(125, 132));
-    y = +(wa2.substring(132, 139));
-
-    address.tract = +(wa2.substring(223, 229));
-    address.block = +(wa2.substring(229, 233));
-    address.lngLat = reproject([x, y]);
-
+    // set status
+    address.status = 'OK';
+        
+    address.lat = wa2.substring(179, 188);
+    address.lng = wa2.substring(188, 199);
+    
+    address.boro = wa2.substring(33,34);
+    address.block = wa2.substring(34,39);
+    address.lot = wa2.substring(39,43);
+    address.bbl = wa2.substring(33,43);
+    
+  } else {
+    address.status = 'ERROR';
   }
-  // Optional: handle errors, return code "EE", etc.
 
   return address;
+};
 
-}
 
 module.exports = geosupport;

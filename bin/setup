@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu
+
+mkdir -p geosupport
+
+cd geosupport
+
+if [[ -d "version-17a_17.1" ]];then
+    printf "It appears that you have already downloaded geosupport. Skipping. \n"
+else
+    printf "Downloading Geosupport\n"
+    wget http://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/gdelx_17a.zip
+    unzip gdelx_17a.zip
+fi
+
+cd ..
