@@ -5,6 +5,7 @@
 # Local geosupports
 /version-*/
 gdelx_*.zip
+geosupport
 
 # Logs
 logs

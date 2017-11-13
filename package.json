@@ -4,7 +4,8 @@
   "description": "Geocode NYC! Really Fast! In Docker! ======================",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "setup": "bin/setup"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,6 @@
     "commander": "^2.9.0",
     "csv-parse": "^1.1.7",
     "csv-stringify": "^1.0.4",
-    "ffi": "^2.2.0",
-    "proj4": "^2.3.15"
+    "ffi": "^2.2.0"
   }
 }

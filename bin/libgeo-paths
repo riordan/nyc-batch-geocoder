@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd geosupport
+
+export LD_LIBRARY_PATH="$(pwd)/version-17a_17.1/lib/"
+export GEOFILES="$(pwd)/version-17a_17.1/fls/"
+export GEOSUPPORT_LIBGEO="$(pwd)/version-17a_17.1/lib/libgeo.so"
+
+cd ..

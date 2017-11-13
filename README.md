@@ -1,7 +1,18 @@
-Geocode CSVs of NYC! Really Fast!
+Geocode CSVs of NYC!
 ======================
 
-Based on Noah [@Veltman's](https://github.com/veltman) [Geosupport w/ JS and node-ffi](https://gist.github.com/veltman/2c79458b2226466920dbd601bf94551f), itself based on brilliant work by [Chris Whong](https://gist.github.com/chriswhong/2e5f0f41fc5d366ec902613251445b30).
+Fork of [this project](https://github.com/riordan/nyc-batch-geocoder), which is based work by Noah [@Veltman's](https://github.com/veltman), [Geosupport w/ JS and node-ffi](https://gist.github.com/veltman/2c79458b2226466920dbd601bf94551f) and [Chris Whong](https://gist.github.com/chriswhong/2e5f0f41fc5d366ec902613251445b30).
+
+# Installation
+
+*This has only been tested on linux*
+
+requirements (besides node): wget & unzip
+
+``` bash
+npm install && npm run setup
+source bin/libgeo-paths
+```
 
 # Usage
 ```
